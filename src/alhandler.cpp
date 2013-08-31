@@ -1,5 +1,6 @@
 #include "alhandler.hpp"
 #include "sub.hpp"
+#include <physfs.h>
 
 
 AlHandler& alHndl = AlHandler::instance();
@@ -7,6 +8,7 @@ AlHandler& alHndl = AlHandler::instance();
 AlHandler::AlHandler()
   : _xx(0),_yy(0),_seb(0), _timer{nullptr}, _display{nullptr}
 {
+  physSetUp();
   if (!al_init()) fatal("Couldn't init allegro5");
   if (!al_install_keyboard()) fatal("Couldn't install keyboard");
   if (!al_install_mouse()) fatal("Couldn't install mouse");
@@ -60,6 +62,7 @@ AlHandler::~AlHandler()
   al_shutdown_image_addon();
   al_shutdown_font_addon();
   al_shutdown_primitives_addon();
+  PHYSFS_deinit();
 }
 
 AlHandler& AlHandler::instance() {
@@ -67,32 +70,16 @@ AlHandler& AlHandler::instance() {
   return ah;
 }
 
-ALLEGRO_DISPLAY* AlHandler::display() const {
-  return _display;
-}
-
-ALLEGRO_TIMER* AlHandler::timer() const {
-  return _timer;
-}
-
-ALLEGRO_EVENT_QUEUE* AlHandler::evque () const {
-  return _evque;
-}
-
-ALLEGRO_FONT* AlHandler::font () const {
-  return _font;
-}
-
-unsigned AlHandler::getxx () const {
-  return _xx;
-}
-
-unsigned AlHandler::getyy () const {
-  return _yy;
-}
-
-double   AlHandler::getseb() const {
-  return _seb;
+void AlHandler::physSetUp() {
+  if (!PHYSFS_init(NULL)) {                                                      // !
+    fatal("Couldn't initialize PHYSFS");
+  }
+  if (!(PHYSFS_mount("data","data",1)
+       && PHYSFS_mount("conf","conf",1)
+       && PHYSFS_mount("data/img","data/img")
+       && PHYSFS_mount("data/snd","data/snd")  )) {
+    fatal("File system corrupted");
+  }
 }
 
 

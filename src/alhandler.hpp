@@ -12,20 +12,23 @@
   * AlHandler
   */
 
-class AlHandler : private Uncopyable
+class AlHandler
 {
   public:
     ~AlHandler();
     static AlHandler& instance ();
-    ALLEGRO_DISPLAY* display() const;
-    ALLEGRO_TIMER* timer() const;
-    ALLEGRO_EVENT_QUEUE* evque () const;
-    ALLEGRO_FONT* font () const;
-    unsigned getxx () const;
-    unsigned getyy () const;
-    double   getseb() const;
+    ALLEGRO_DISPLAY* display() const {return _display;}
+    ALLEGRO_TIMER* timer() const {return _timer;}
+    ALLEGRO_EVENT_QUEUE* evque () const {return _evque;}
+    ALLEGRO_FONT* font () const {return _font;}
+    unsigned getxx () const {return _xx;}
+    unsigned getyy () const {return _yy;}
+    double   getseb() const {return _seb;}
     bool open (unsigned xx, unsigned yy, bool fullscreen);
     void setTimer (double seb);
+    //Nem masolhato
+    AlHandler (const AlHandler&) = delete;
+    AlHandler& operator= (const AlHandler&) = delete;
   protected:
   private:
     ALLEGRO_DISPLAY     *_display;
@@ -36,6 +39,7 @@ class AlHandler : private Uncopyable
     double _seb;
 
     AlHandler();
+    void physSetUp ();
 };
 
 /**

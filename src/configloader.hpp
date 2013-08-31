@@ -6,7 +6,7 @@
 #include <sstream>
 #include <allegro5/allegro.h>
 
-const std::string ConfigFileName = "conf.ini";
+const std::string ConfigFileName = "conf/conf.ini";
 
 class Parameter;
 
