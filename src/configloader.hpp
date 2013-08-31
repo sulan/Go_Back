@@ -41,7 +41,11 @@ extern ConfigLoader& configLoader;
 
 /**
  *  A configfajlbol betoltendo paramterek tipusa
- *  Hasznalatra pl.: Paramater PcSzemSzin ("PC","SzemSzin");
+ *  Hasznalatra pl.:
+ *  deklaracio:
+ *    Paramater PcSzemSzin ("PC","SzemSzin");
+ *  ertek:
+ *    szemszin = PcSzemSzin();
  */
 
 template<typename T>
@@ -56,7 +60,7 @@ public:
   //Nem masolhato
   Parameter (const Parameter&) = delete;
   Parameter& operator= (const Parameter&) = delete;
-  T operator() () {
+  const T operator() () {
     return _value;
   }
   friend class ConfigLoader;
