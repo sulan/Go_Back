@@ -45,6 +45,8 @@
 		</Linker>
 		<Unit filename="src/alhandler.cpp" />
 		<Unit filename="src/alhandler.hpp" />
+		<Unit filename="src/configloader.cpp" />
+		<Unit filename="src/configloader.hpp" />
 		<Unit filename="src/sub.cpp" />
 		<Unit filename="src/sub.hpp" />
 		<Extensions>
