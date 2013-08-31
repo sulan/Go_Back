@@ -10,6 +10,10 @@ const std::string ConfigFileName = "conf.ini";
 
 class Parameter;
 
+/**
+ *  Configuration loader singleton
+ */
+
 class ConfigLoader
 {
   public:
@@ -33,6 +37,11 @@ class ConfigLoader
 
 extern ConfigLoader& configLoader;
 
+/**
+ *  A configfajlbol betoltendo paramterek tipusa
+ *  Hasznalatra pl.: Paramater PcSzemSzin ("PC","SzemSzin");
+ */
+
 template<typename T>
 class Parameter {
 public:
@@ -42,6 +51,9 @@ public:
   }
   ~Parameter () {
   }
+  //Nem masolhato
+  Parameter (const Parameter&) = delete;
+  Parameter& operator= (const Parameter&) = delete;
   T operator() () {
     return _value;
   }
