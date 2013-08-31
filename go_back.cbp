@@ -43,6 +43,10 @@
 			<Add library="/usr/lib/liballegro_primitives.so" />
 			<Add library="/usr/lib/liballegro_image.so" />
 		</Linker>
+		<Unit filename="src/alhandler.cpp" />
+		<Unit filename="src/alhandler.hpp" />
+		<Unit filename="src/sub.cpp" />
+		<Unit filename="src/sub.hpp" />
 		<Extensions>
 			<envvars />
 			<code_completion />
