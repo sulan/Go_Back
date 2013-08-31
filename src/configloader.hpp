@@ -28,6 +28,8 @@ class ConfigLoader
       _params.push_back(param);
       return eredm;
     }
+    ConfigLoader (const ConfigLoader&) = delete;
+    ConfigLoader& operator= (const ConfigLoader&) = delete;
   protected:
   private:
     ALLEGRO_CONFIG* _cfg;
