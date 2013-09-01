@@ -6,6 +6,8 @@ Debug/
 
 #CB
 *.save
+*.layout
+*.depend
 
 #Testing
 test/

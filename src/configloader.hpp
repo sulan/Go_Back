@@ -8,7 +8,7 @@
 
 const std::string ConfigFileName = "conf/conf.ini";
 
-class Parameter;
+class OsParameter;
 
 /**
  *  Configuration loader singleton
@@ -21,8 +21,10 @@ class ConfigLoader
     static ConfigLoader& instance ();
 
     template<typename T>
-    T regisztral (Parameter* param,std::string section, std::string kulcs) {
-      std::stringstream ss (al_get_config_value(_cfg, section.c_str(),kulcs.c_str));
+    T regisztral (OsParameter* param,std::string section, std::string kulcs) {
+      const char * c = section.c_str();
+      const char *c2 = kulcs.c_str();
+      std::stringstream ss (al_get_config_value(_cfg, c,c2));
       T eredm;
       ss>>eredm;
       _params.push_back(param);
@@ -33,14 +35,14 @@ class ConfigLoader
   protected:
   private:
     ALLEGRO_CONFIG* _cfg;
-    vector<Parameter*> _params;
+    std::vector<OsParameter*> _params;
     ConfigLoader();
 };
 
 extern ConfigLoader& configLoader;
 
 /**
- *  A configfajlbol betoltendo paramterek tipusa
+ *  A configfajlbol betoltendo parameterek tipusa
  *  Hasznalatra pl.:
  *  deklaracio:
  *    Paramater PcSzemSzin ("PC","SzemSzin");
@@ -48,12 +50,22 @@ extern ConfigLoader& configLoader;
  *    szemszin = PcSzemSzin();
  */
 
+//Megj.: a modosithatosag miatt lehet, hogy kesobb valtozik, de az interface marad
+
+class OsParameter {
+public:
+  OsParameter () {}
+  virtual ~OsParameter () {}
+  OsParameter (const OsParameter&) = delete;
+  OsParameter& operator= (const OsParameter&) = delete;
+};
+
 template<typename T>
-class Parameter {
+class Parameter : public OsParameter {
 public:
   Parameter (std::string section, std::string kulcs)
    : _section{section}, _kulcs{kulcs} {
-    _value = (ConfigLoader::instance()).regisztral(this,section,kulcs)
+    _value = (ConfigLoader::instance()).regisztral<T>(this,section,kulcs);
   }
   ~Parameter () {
   }

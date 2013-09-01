@@ -52,6 +52,9 @@
 		<Unit filename="src/medialoader.hpp" />
 		<Unit filename="src/sub.cpp" />
 		<Unit filename="src/sub.hpp" />
+		<Unit filename="test/test.cpp">
+			<Option target="Debug" />
+		</Unit>
 		<Extensions>
 			<envvars />
 			<code_completion />

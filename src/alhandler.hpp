@@ -24,7 +24,7 @@ class AlHandler
     unsigned getxx () const {return _xx;}
     unsigned getyy () const {return _yy;}
     double   getseb() const {return _seb;}
-    bool open (unsigned xx, unsigned yy, bool fullscreen);
+    bool open (unsigned xx, unsigned yy, bool fullscreen = false);
     void setTimer (double seb);
     //Nem masolhato
     AlHandler (const AlHandler&) = delete;

@@ -1,6 +1,7 @@
 #include "alhandler.hpp"
 #include "sub.hpp"
 #include <physfs.h>
+#include <allegro5/allegro_physfs.h>
 
 
 AlHandler& alHndl = AlHandler::instance();
@@ -18,11 +19,10 @@ AlHandler::AlHandler()
   _evque   = al_create_event_queue();
   al_register_event_source(_evque,al_get_keyboard_event_source());
   al_register_event_source(_evque,al_get_mouse_event_source());
-  al_register_event_source(_evque,al_get_display_event_source(_display));
   _font = al_create_builtin_font();
 }
 
-bool AlHandler::open(unsigned xx, unsigned yy, bool fullscreen = false) {
+bool AlHandler::open(unsigned xx, unsigned yy, bool fullscreen) {
   if (_display) {
     al_set_display_flag(_display,ALLEGRO_FULLSCREEN,fullscreen);
     if (al_resize_display(_display,xx,yy) ) {
@@ -34,6 +34,7 @@ bool AlHandler::open(unsigned xx, unsigned yy, bool fullscreen = false) {
   } else {
     al_set_new_display_flags(fullscreen?ALLEGRO_FULLSCREEN:ALLEGRO_WINDOWED);
     _display = al_create_display(xx,yy);
+    al_register_event_source(_evque,al_get_display_event_source(_display));
     if (_display) {
       _xx = xx; _yy = yy;
       return true;
@@ -76,10 +77,11 @@ void AlHandler::physSetUp() {
   }
   if (!(PHYSFS_mount("data","data",1)
        && PHYSFS_mount("conf","conf",1)
-       && PHYSFS_mount("data/img","data/img")
-       && PHYSFS_mount("data/snd","data/snd")  )) {
+       && PHYSFS_mount("data/img","data/img",1)
+       && PHYSFS_mount("data/snd","data/snd",1)  )) {
     fatal("File system corrupted");
   }
+  al_set_physfs_file_interface();
 }
 
 

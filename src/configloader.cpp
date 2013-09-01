@@ -17,6 +17,6 @@ ConfigLoader::~ConfigLoader()
 }
 
 ConfigLoader& ConfigLoader::instance() {
-  static ConfigLoader cl ();
+  static ConfigLoader cl;
   return cl;
 }
