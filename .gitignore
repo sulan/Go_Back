@@ -6,3 +6,6 @@ Debug/
 
 #CB
 *.save
+
+#Testing
+test/
