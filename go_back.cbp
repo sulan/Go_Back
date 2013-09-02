@@ -42,7 +42,7 @@
 			<Add library="/usr/lib/liballegro_physfs.so" />
 			<Add library="/usr/lib/liballegro_primitives.so" />
 			<Add library="/usr/lib/liballegro_image.so" />
-			<Add library="/usr/lib/libphysfs.a" />
+			<Add library="/usr/lib/libphysfs.so" />
 		</Linker>
 		<Unit filename="src/alhandler.cpp" />
 		<Unit filename="src/alhandler.hpp" />

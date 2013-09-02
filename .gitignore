@@ -8,6 +8,3 @@ Debug/
 *.save
 *.layout
 *.depend
-
-#Testing
-test/
