@@ -39,7 +39,8 @@ struct Vektor {
   */
 
 void fatal (std::string s);
-inline void logstderr (std::string s) {
+template<typename T>
+inline void logstderr (T s) {
   #ifdef __DEBUG__
     std::cerr<<"[  LOG  ] "<<s<<std::endl;
   #endif

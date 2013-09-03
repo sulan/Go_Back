@@ -6,8 +6,6 @@
 #include <sstream>
 #include <allegro5/allegro.h>
 
-const std::string ConfigFileName = "conf/conf.ini";
-
 class OsParameter;
 
 /**
@@ -19,6 +17,7 @@ class ConfigLoader
   public:
     ~ConfigLoader();
     static ConfigLoader& instance ();
+    const std::string ConfigFileName = "conf/conf.ini";
 
     template<typename T>
     T regisztral (OsParameter* param,std::string section, std::string kulcs) {
