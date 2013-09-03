@@ -52,6 +52,8 @@
 		<Unit filename="src/configloader.hpp" />
 		<Unit filename="src/elemstate.cpp" />
 		<Unit filename="src/elemstate.hpp" />
+		<Unit filename="src/gamesave.cpp" />
+		<Unit filename="src/gamesave.hpp" />
 		<Unit filename="src/jatekelem.cpp" />
 		<Unit filename="src/jatekelem.hpp" />
 		<Unit filename="src/medialoader.cpp" />
