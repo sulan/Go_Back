@@ -6,6 +6,8 @@
   #include <iostream>
 #endif
 
+#include <vector>
+
 /**
   * Normal, linearis algebraban alkalmazott 2D vektor, normal muveletekkel
   */
@@ -33,6 +35,22 @@ struct Vektor {
   }
   const double abs () const ;
 };
+
+/**
+ *  Cellakoordinatak
+ */
+
+struct CellaKoord {
+  int x,y;
+  CellaKoord () : x{0}, y{0} {}
+  CellaKoord (unsigned ax, unsigned ay) : x{ax}, y{ay} {}
+};
+
+/**
+ *  Shape
+ */
+
+using ElemShape = std::vector<CellaKoord>;
 
 /**
   *  Aprobb programozastechnikai rutinok

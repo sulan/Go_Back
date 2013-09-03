@@ -46,12 +46,22 @@
 		</Linker>
 		<Unit filename="src/alhandler.cpp" />
 		<Unit filename="src/alhandler.hpp" />
+		<Unit filename="src/checkpoint.cpp" />
+		<Unit filename="src/checkpoint.hpp" />
 		<Unit filename="src/configloader.cpp" />
 		<Unit filename="src/configloader.hpp" />
+		<Unit filename="src/elemstate.cpp" />
+		<Unit filename="src/elemstate.hpp" />
+		<Unit filename="src/jatekelem.cpp" />
+		<Unit filename="src/jatekelem.hpp" />
 		<Unit filename="src/medialoader.cpp" />
 		<Unit filename="src/medialoader.hpp" />
 		<Unit filename="src/sub.cpp" />
 		<Unit filename="src/sub.hpp" />
+		<Unit filename="src/szint.cpp" />
+		<Unit filename="src/szint.hpp" />
+		<Unit filename="src/terkep.cpp" />
+		<Unit filename="src/terkep.hpp" />
 		<Unit filename="test/test.cpp">
 			<Option target="Debug" />
 		</Unit>
