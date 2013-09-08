@@ -46,8 +46,6 @@
 		</Linker>
 		<Unit filename="src/alhandler.cpp" />
 		<Unit filename="src/alhandler.hpp" />
-		<Unit filename="src/checkpoint.cpp" />
-		<Unit filename="src/checkpoint.hpp" />
 		<Unit filename="src/configloader.cpp" />
 		<Unit filename="src/configloader.hpp" />
 		<Unit filename="src/elemstate.cpp" />

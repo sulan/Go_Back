@@ -22,18 +22,18 @@ struct FegyverSpec {
 class ElemState
 {
   public:
-    ElemState();
+    ElemState(JatekElem* parent);
     virtual ~ElemState();
-    ElemState (const ElemState&& rhs);
-    ElemState& operator= (const ElemState&& rhs);
+    ElemState (ElemState&& rhs);
+    ElemState& operator= (ElemState&& rhs);
     virtual void onTimer () = 0;
-    virtual void onMsg (const MessageBody& msg) = 0;
+    virtual void onMsg (const MessageBody& msg) {};
   private:
+  protected:
     JatekElem *_parent;
     ElemShape _shape;
     //Sprite _sprite;
-    void sendMessage ();
-  protected:
+    void sendMessage (MessageType t);
 };
 
 #endif // ELEMSTATE_HPP

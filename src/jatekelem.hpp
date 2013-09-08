@@ -20,10 +20,13 @@ enum JatekElemTipus {
 class JatekElem
 {
   public:
-    JatekElem();
+    JatekElem(Szint* sz);
     virtual ~JatekElem();
     CellaKoord hol_vagy () const {
       return _hely;
+    }
+    Szint* getSzint () const {
+      return _szint;
     }
     virtual void draw () const = 0;
     void changeState (ElemState uj);
@@ -32,6 +35,7 @@ class JatekElem
     virtual void onTimer () {}
     virtual void onMsg () {}
   private:
+    Szint* _szint;
     CellaKoord _hely;
     ElemState _state;
   protected:
