@@ -34,6 +34,9 @@ class JatekElem
     virtual JatekElemTipus tipus () const;
     virtual void onTimer () {}
     virtual void onMsg () {}
+    virtual void draw () const {
+      _state->draw();
+    }
   private:
     Szint* _szint;
     CellaKoord _hely;
