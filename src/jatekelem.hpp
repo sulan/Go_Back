@@ -17,6 +17,8 @@ enum JatekElemTipus {
   JEFegyver
 };
 
+class Harcolo;
+
 class JatekElem
 {
   public:
@@ -33,7 +35,9 @@ class JatekElem
     virtual void saveToFile () = 0;
     virtual JatekElemTipus tipus () const;
     virtual void onTimer () {}
-    virtual void onMsg () {}
+    //virtual void onMsg () {}
+    virtual void onStep (JatekElem* sender) {}
+    virtual int  onHit (Harcolo* sender) {}
     virtual void draw () const {
       _state->draw();
     }

@@ -33,7 +33,7 @@ class ElemState
   protected:
     ElemShape _shape;
     //Sprite _sprite;
-    void sendMessage (MessageType t);
+    //void sendMessage (MessageType t);
 };
 
 /**
@@ -44,6 +44,8 @@ class StateLetra : public ElemState {
 public:
   StateLetra (Letra* parent) : _parent{parent} {}
   virtual ~StateLetra() {}
+  StateLetra (StateLetra&&);
+  StateLetra& operator= (StateLetra&&);
   virtual void onTimer () {}
   virtual void onMsg (const MessageBody& msg) {}
   virtual void draw () const;
