@@ -28,3 +28,15 @@ void ElemState::sendMessage(MessageType t) {
   shared_ptr<MessageBody> m = new MessageBody {_parent, _shape, t};
   _parent->getSzint()->emitEvent(m);
 }
+
+/**
+ *  Letra
+ */
+
+void StateLetra::draw() const {
+  CellaKoord k {_parent->hol_vagy()};
+  for (unsigned i = 0; i<_parent->getHossz(); ++i) {
+    //sprite->draw(k);
+    k.y--;
+  }
+}

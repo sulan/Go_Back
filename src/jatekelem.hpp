@@ -49,6 +49,9 @@ public:
   virtual JatekElemTipus tipus () const {
     return JELetra;
   }
+  virtual unsigned getHossz () const {
+    return _hossz;
+  }
 protected:
   unsigned _hossz;
 };
